@@ -1,0 +1,68 @@
+function searchFormula() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const formulas = document.querySelectorAll('.rumus-title');
+  
+  formulas.forEach(formula => {
+    const text = formula.textContent.toLowerCase();
+    const rumusContainer = formula.closest('.rumus');
+    
+    if (text.includes(input)) {
+      rumusContainer.style.display = 'block';
+      rumusContainer.style.animation = 'slideIn 0.5s ease';
+    } else {
+      rumusContainer.style.display = 'none';
+    }
+  });
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+  const isDark = document.body.classList.contains('dark-mode');
+  localStorage.setItem('darkMode', isDark);
+  
+  const darkModeBtn = document.getElementById('darkModeBtn');
+  darkModeBtn.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+}
+
+function setupCopyButtons() {
+  document.querySelectorAll('.rumus').forEach(rumus => {
+    rumus.addEventListener('click', function() {
+      const rumusText = this.querySelector('.rumus-title').textContent;
+      navigator.clipboard.writeText(rumusText).then(() => {
+        alert('Rumus disalin: ' + rumusText);
+      });
+    });
+  });
+}
+
+function toggleBookmark(rumusId) {
+  const rumus = document.getElementById(rumusId);
+  rumus.classList.toggle('bookmarked');
+  
+  const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+  const index = bookmarks.indexOf(rumusId);
+  
+  if (index === -1) {
+    bookmarks.push(rumusId);
+  } else {
+    bookmarks.splice(index, 1);
+  }
+  
+  localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    document.getElementById('darkModeBtn').textContent = 'Light Mode';
+  }
+
+  const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+  bookmarks.forEach(id => {
+    const rumus = document.getElementById(id);
+    if (rumus) rumus.classList.add('bookmarked');
+  });
+  
+  // Setup copy buttons
+  setupCopyButtons();
+});
