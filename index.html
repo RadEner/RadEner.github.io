@@ -2,10 +2,238 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Proyek Fisika</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics.id SMA - Rumus Fisika</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    button:hover {
+      background-color: #2980b9;
+      transform: translateY(-2px);
+    }
+    
+    button.active-btn {
+      background-color: #2c3e50;
+    }
+    
+    .bab {
+      display: none;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+    }
+    
+    .active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    h2 {
+      color: #3498db;
+      margin-top: 0;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    
+    ol {
+      padding-left: 20px;
+    }
+    
+    li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    .rumus {
+      background-color: #f8f9fa;
+      border-left: 4px solid #3498db;
+      padding: 10px 15px;
+      margin: 15px 0;
+      font-family: "Courier New", monospace;
+      overflow-x: auto;
+    }
+    
+    .rumus-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+    
+    .keterangan {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #7f8c8d;
+    }
+    
+    .sub-bab {
+      margin-left: 20px;
+      margin-top: 15px;
+    }
+    
+    .turunan-rumus {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f0f8ff;
+      border-radius: 8px;
+    }
+    
+    .penurunan {
+      margin-top: 10px;
+      padding-left: 20px;
+      border-left: 3px solid #3498db;
+    }
+    
+    .penurunan p {
+      margin: 5px 0;
+      line-height: 1.6;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width: 600px) {
+      .nav-buttons {
+        flex-direction: column;
+      }
+      
+      button {
+        width: 100%;
+        margin: 5px 0;
+      }
+    }
+    dark-mode {
+      --light-text: #ecf0f1;
+    }
+
+    .dark-mode .bab {
+      background-color: #34495E;
+      color: var(--light-text);
+    }
+  </style>
 </head>
 <body>
-  <h1>Website Proyek Fisika</h1>
-  <p>Dibuat oleh RadEner</p>
+
+  <h1>Physics.id SMA - Rumus Fisika</h1>
+  <div class="nav-buttons">
+    <button onclick="showBab('kelasX')" class="active-btn">Kelas X</button>
+    <button onclick="showBab('kelasXI')">Kelas XI</button>
+    <button onclick="showBab('kelasXII')">Kelas XII</button>
+  </div>
+<div class="utility-buttons">
+  <input type="text" id="searchInput" placeholder="Cari rumus..." onkeyup="searchFormula()">
+  <button id="darkModeBtn" onclick="toggleDarkMode()">Dark Mode</button>
+</div>
+  <!-- Kelas X -->
+  <div id="kelasX" class="bab active">
+    <h2>Kelas X</h2>
+    
+    <h3>1. Gerak Lurus Berubah Beraturan (GLBB)</h3>
+    <div class="turunan-rumus">
+      <div class="rumus">
+        <div class="rumus-title">v<sub>t</sub> = v<sub>0</sub> + a·t</div>
+        <div class="penurunan">
+          <p>1. a = Δv/Δt</p>
+          <p>2. a = (v<sub>t</sub> - v<sub>0</sub>)/t</p>
+          <p>3. a·t = v<sub>t</sub> - v<sub>0</sub></p>
+          <p>4. v<sub>t</sub> = v<sub>0</sub> + a·t</p>
+        </div>
+      </div>
+      
+      <div class="rumus">
+        <div class="rumus-title">s = v<sub>0</sub>·t + ½a·t²</div>
+        <div class="penurunan">
+          <p>1. s = v<sub>rata-rata</sub>·t</p>
+          <p>2. v<sub>rata-rata</sub> = (v<sub>0</sub> + v<sub>t</sub>)/2</p>
+          <p>3. v<sub>t</sub> = v<sub>0</sub> + a·t</p>
+          <p>4. s = [(v<sub>0</sub> + (v<sub>0</sub> + a·t)]/2 · t</p>
+          <p>5. s = (2v<sub>0</sub> + a·t)/2 · t</p>
+          <p>6. s = v<sub>0</sub>·t + ½a·t²</p>
+        </div>
+      </div>
+    </div>
+    
+    <h3>2. Gerak Parabola</h3>
+    <div class="turunan-rumus">
+      <div class="rumus">
+        <div class="rumus-title">t<sub>max</sub> = v<sub>0</sub>·sinθ/g</div>
+        <div class="penurunan">
+          <p>1. Pada titik tertinggi, v<sub>y</sub> = 0</p>
+          <p>2. v<sub>y</sub> = v<sub>0y</sub> - g·t</p>
+          <p>3. 0 = v<sub>0</sub>·sinθ - g·t</p>
+          <p>4. g·t = v<sub>0</sub>·sinθ</p>
+          <p>5. t = v<sub>0</sub>·sinθ/g</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div id="kelasXI" class="bab">
+    <h2>Kelas XI</h2>
+  </div>
+
+  <div id="kelasXII" class="bab">
+    <h2>Kelas XII</h2>
+  </div>
+
+  <script>
+    function showBab(id) {
+      const semuaBab = document.querySelectorAll('.bab');
+      semuaBab.forEach(bab => bab.classList.remove('active'));
+      
+      document.getElementById(id).classList.add('active');
+      
+      const semuaTombol = document.querySelectorAll('.nav-buttons button');
+      semuaTombol.forEach(tombol => tombol.classList.remove('active-btn'));
+      
+      const tombolAktif = Array.from(semuaTombol).find(tombol => 
+        tombol.getAttribute('onclick').includes(id)
+      );
+      
+      if (tombolAktif) {
+        tombolAktif.classList.add('active-btn');
+      }
+    }
+  </script>
+<body class="dark-mode">
+  <div class="bab">Isi bab</div>
 </body>
 </html>
