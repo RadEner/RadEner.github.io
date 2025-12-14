@@ -14,7 +14,7 @@ HTML, CSS, dan JavaScript.
 ---
 
 ## Tujuan Proyek
-- pembelajaran subdomain github pada pembuat dan nantinya akan di kembangkan ke domain untuk penggunaan PHP dan database
+- pembelajaran subdomain github pada pembuat"RadEner", dan nantinya akan di kembangkan ke domain untuk penggunaan PHP dan database
 - Pembuatan proyek ini untuk matakuliah Tool Teknologi Informasi 
 - Membantu memahami konsep dasar fisika 
 - Menyajikan materi fisika secara sederhana dan interaktif
